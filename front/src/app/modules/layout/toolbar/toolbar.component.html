@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <a class="title-button" href="/">Docker Hub</a>
+  <span class="fill-remaining-space"></span>
+  <a class="nav-button" *ngIf="userType != undefined" href="/all-user-repo">Repositories</a>
+  <a class="nav-button" *ngIf="userType == 'StandardUser'" href="/organizations">Organizations</a>
+  <a class="nav-button" *ngIf="userType != undefined" href="/teams">Teams</a>
+  <a class="nav-button" *ngIf="userType == 'Admin' || userType == 'SuperAdmin'" href="/badges">Badges</a>
+  <a class="nav-button" href="/explore">Explore</a>
+  <a class="nav-button" *ngIf="userType == 'Admin' || userType == 'SuperAdmin'" href="/logs">Logs</a>
+  <a class="nav-button" *ngIf="userType == 'SuperAdmin'" href="/sign-up-admin">Sign Up Admin</a>
+  <a class="nav-button" *ngIf="userType == undefined" href="/login">Login</a>
+  <a class="nav-button" *ngIf="userType == undefined" href="/sign-up">Sign Up</a>
+  <a class="nav-button" *ngIf="userType != undefined" (click)="logout()">Logout</a>
+</mat-toolbar>

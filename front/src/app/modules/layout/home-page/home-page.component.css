@@ -1,0 +1,80 @@
+.header {
+    margin: 20px 0 20px 10%;
+    color: #535050;
+    font-size: 20px;
+}
+
+.image-list {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 20px;
+    margin: 0 auto;
+  }
+  
+  .image-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+  }
+  
+  .image-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .repo-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #282626;
+    cursor: pointer;
+  }
+  
+  .badge {
+    background-color: #f0f0f0;
+    padding: 4px 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    color: #007bff;
+  }
+  
+  .image-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .image-tags {
+    margin-bottom: 15px;
+  }
+  
+  .tag {
+    background-color: #f4f7fa;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  
+  .image-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .star-count {
+    color: #f39c12;
+  }
+
+  .image-id {
+    font-size: 14px;
+    color: #666;
+  }

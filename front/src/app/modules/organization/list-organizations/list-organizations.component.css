@@ -1,0 +1,177 @@
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px; 
+  }
+  
+  .search-input {
+    position: relative;
+    width: 40%; 
+  }
+  
+  .search-input input {
+    width: 100%; 
+    padding: 8px 35px; 
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .create-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+.extensions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .extension-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .extension-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px); 
+  }
+  
+  .icon img {
+    width: 100px;
+    height: 100px;
+    margin-right: 16px;
+  }
+  
+  .details {
+    flex-grow: 1;
+  }
+  
+  .details h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .publisher {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 80px 0 10px 0;
+  }
+  
+  .pagination-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .page-indicator {
+    font-size: 16px;
+  }
+  
+  .page-size-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .page-size-container select {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+  
+  .extensions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .extension-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #aaa;
+    cursor: pointer;
+  }
+  
+  .page-size-select {
+    width: 80px;
+  }
+
+  .custom-select {
+    height: 36px; 
+    line-height: 36px;
+    padding: 4px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .custom-select:focus {
+    border-color: #3f51b5; 
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+    cursor: pointer;
+  }
+
+  .owner-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 8px;
+    margin-right: 25px;
+  }
+  
+  .edit-btn {
+    margin-bottom: 8px; 
+  }
+  
+  .deactivate-icon {
+    cursor: pointer;
+  }  
+  
+  .deactivate-icon:hover {
+    transform: scale(1.1);
+  }
+  

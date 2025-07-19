@@ -1,0 +1,48 @@
+<div class="team-details-container">
+  <!-- Team Details Section -->
+   <h1>Team Details</h1>
+  <div class="team-details">
+    <div class="left">
+      <h2>{{ team?.name }}</h2>
+      <p id="description"><strong>Description:</strong> {{ team?.description }}</p>
+    </div>
+    <div class="right">
+      <h3>Members</h3>
+      <ul>
+        <li *ngFor="let member of team?.members">{{ member.email }}</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="openEditDialog()">Edit Team</button>
+      <button mat-raised-button color="warn" (click)="openDeleteDialog()">Delete Team</button>
+    </div>
+  </div>
+
+  <h3>Repositories</h3>
+  <div id="table-container">
+    <table mat-table [dataSource]="repositories" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let repo">{{ repo.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="visibility">
+        <th mat-header-cell *matHeaderCellDef> Visibility </th>
+        <td mat-cell *matCellDef="let repo">{{ repo.visibility ? 'Public' : 'Private' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="permissions">
+        <th mat-header-cell *matHeaderCellDef> Permissions </th>
+        <td mat-cell *matCellDef="let repo"> {{ 
+          repo.permissions === 0 ? 'Read Only' :
+          repo.permissions === 1 ? 'Read/Write' :
+          repo.permissions === 2 ? 'Admin' :
+          'Unknown' 
+        }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

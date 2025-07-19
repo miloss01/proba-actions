@@ -1,0 +1,22 @@
+<div class="bordered-container">
+    <h3>Visibility settings
+        @if (repository.isPublic) {
+            <mat-icon aria-hidden="false" aria-label="Public">public</mat-icon>
+        } @else {
+            <mat-icon aria-hidden="false" aria-label="Lock icon">lock</mat-icon>
+        }
+    </h3>
+    
+    <p class="add-a-description">This repository is {{ repository.isPublic ? 'public' : 'private' }}</p>
+    <p class="margin-top-bottom">Public repositories are available to anyone. Private repositories are only available to you.</p>
+    
+    <button mat-raised-button color="primary" (click)="onVisibilityChange()">Make {{ repository.isPublic ? 'private' : 'public' }}</button>  
+</div>
+
+<div class="bordered-container">
+    <h3>Delete repository</h3>
+    
+    <p class="margin-top-bottom">Deleting a repository will <b>destroy</b> all images stored within it. This action <b>cannot be undone</b>.</p>
+    
+    <button mat-raised-button color="warn" (click)="onDelete()">Delete repository</button>   
+</div>

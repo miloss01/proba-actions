@@ -1,0 +1,54 @@
+.team-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 55%;
+  margin: auto;
+}
+
+.team-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+}
+
+#description {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.team-details .left {
+  padding-right: 10px;
+  flex: 1;
+}
+
+.team-details .right {
+  flex: 1;
+}
+
+.team-details ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.team-details .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+}
+
+.team-details .buttons button {
+  width: 100%;
+}
+
+#table-container {
+  width: 99%;
+}

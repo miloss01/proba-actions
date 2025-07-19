@@ -1,0 +1,18 @@
+table {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .mat-column-badge mat-select {
+    width: 100%;
+  }
+  
+  .mat-column-actions {
+    text-align: center;
+  }
+
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+}
+  

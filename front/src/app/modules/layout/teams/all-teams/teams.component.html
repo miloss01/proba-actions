@@ -1,0 +1,27 @@
+<div id="header-container">
+    <p id="title">Teams</p>
+    <button mat-raised-button color="primary" id="create-team-btn" (click)="openCreateTeamForm()">Create Team</button>
+  </div>
+
+<div id="table-container">
+    <table mat-table [dataSource]="teams" class="mat-elevation-z8">
+    
+        <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element" class="description"> {{element.description}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row class="row" *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+    </table>
+</div>
