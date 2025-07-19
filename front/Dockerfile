@@ -4,16 +4,21 @@ FROM node:20 as build
 WORKDIR /app
 COPY . .
 RUN npm install
-
-# ARG API_HOST=http://localhost:5156/api1/
-# RUN sed -i "s|apiHost: '.*'|apiHost: '${API_HOST}'|g" src/app/env/environment.ts
-
 RUN npm run build --prod
 
 # Serve with NGINX
 FROM nginx:alpine
+
+# Kopiraj build output (pazi da je tačan outputPath iz angular.json)
 COPY --from=build /app/dist/front/browser /usr/share/nginx/html
 
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+# Kopiraj nginx template config
+COPY nginx.template.conf /etc/nginx/templates/default.conf.template
+
+# Default vrednost ako nije prosleđeno u compose
+ENV APIHOST=http://localhost:5156/apiizdockerfile/
+
+# Pokreni NGINX nakon što zameniš varijablu u template configu
+CMD ["/bin/sh", "-c", "envsubst '$$APIHOST' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
 
 EXPOSE 80
