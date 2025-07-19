@@ -1,0 +1,32 @@
+<div class="pagination-container">
+  <button
+    mat-raised-button 
+    color="primary"
+    (click)="onPageChange(-1)"
+    [disabled]="currentPage === 1"
+  >
+    Previous
+  </button>
+
+  <span class="page-indicator">
+    {{ currentPage }} / {{ totalPages }}
+  </span>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onPageChange(1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+
+  <div class="page-size-container">
+    <label for="page-size">Page Size:</label>
+    <select id="page-size" class="custom-select" (change)="onPageSizeChange($event)">
+      <option [value]="2">2</option>
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+    </select>
+  </div>
+</div>

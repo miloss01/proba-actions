@@ -1,0 +1,44 @@
+<h2>{{repository.owner}}/{{repository.name}}
+    @if (repository.isPublic) {
+        <mat-icon aria-hidden="false" aria-label="Public">public</mat-icon>
+    } @else {
+        <mat-icon aria-hidden="false" aria-label="Lock icon">lock</mat-icon>
+    }
+</h2>
+<p class="add-a-description">Created at {{repository.createdAt}}</p>
+@if (desctiptionEdditing) {
+    <div class="form-row">
+        <form class="example-form">
+                <mat-form-field >
+                <mat-label>Description</mat-label>
+                <textarea matInput [formControl]="descriptionFormControl">{{repository.description}}</textarea>
+                </mat-form-field>
+        </form>
+        <div class="buttons">
+            <button mat-button color="warn" (click)="onDescriptionCancel()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="onDescriptionSave()">Save</button>
+        </div>
+    </div>
+
+
+} @else {
+    <div class="form-row">
+        @if (repository.description){
+            <p>{{repository.description}}</p>
+        } @else {
+            <p class="add-a-description">Add a description</p>   
+        }
+        <button  mat-button (click)="onDescriptionEddit()"><mat-icon aria-hidden="false" aria-label="Edit icon">edit</mat-icon></button>    
+    </div>
+}
+
+<h3>Docker commands</h3>
+<p>To push a new tag to this repository:</p>
+<p class="code-block">docker push {{repository.owner}}/{{repository.name}}:tagname</p>
+
+<h3 class="margin-top">Tags</h3>
+@if (repository.images.length) {
+    <p>ne znam</p>
+} @else {
+    <p class="add-a-description">Pushed images appear here.</p>
+}

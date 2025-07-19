@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Spacing between child elements */
+    padding: 24px; /* A consistent padding inside the modal */
+    max-width: 600px; /* Maximum width for better usability */
+    width: 80vw; /* Makes the modal responsive */
+    height: auto; /* Allows the height to adjust based on content */
+    max-height: 90vh; /* Prevents the modal from exceeding the viewport height */
+    overflow-y: auto; /* Adds a scroll if content exceeds the max-height */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 16px; /* Adds spacing between the buttons */
+}
+
+.warning-container {
+    border: 2px solid #f44336; /* Red border for warning */
+    background-color: #fdecea; /* Light red background */
+    color: #d32f2f; /* Darker red text for visibility */
+    padding: 16px; /* Padding for better spacing */
+    border-radius: 8px; /* Rounded corners */
+    font-family: Arial, sans-serif; /* Optional: consistent font */
+    margin-bottom: 16px; /* Spacing below the container */
+}
+
+.warning-container strong {
+    font-weight: bold; /* Emphasize critical parts */
+}

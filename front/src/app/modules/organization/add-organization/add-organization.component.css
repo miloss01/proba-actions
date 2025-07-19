@@ -1,0 +1,35 @@
+.organization-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.image-preview {
+  margin-top: 10px;
+}
+
+.preview-img {
+  width: 150px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.first-field {
+  margin-top: 10px;
+}

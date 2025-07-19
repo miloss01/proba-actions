@@ -1,0 +1,41 @@
+.base-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.form-title{
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--primary-01);
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+}
+mat-error{
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.centered-container{
+  min-height: 90vh;
+}
+.action-link {
+  display: block;
+  margin-top: 16px;
+  color: var(--primary-01);
+  text-decoration: none;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}

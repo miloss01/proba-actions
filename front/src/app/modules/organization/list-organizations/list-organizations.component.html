@@ -1,0 +1,88 @@
+<div class="search-container">
+    <div class="search-input">
+      <span class="search-icon"> 🔍 </span>
+      <input 
+        type="text" 
+        placeholder="Search by organization name" 
+        [(ngModel)]="searchQuery" 
+        (input)="onSearchOrganization()"/>
+    </div>
+    <button mat-raised-button color="primary" class="create-btn" (click)="openDialog()">Create an organization</button>
+  </div>
+  
+<div class="pagination-container">
+    <button mat-raised-button color="primary" (click)="changePage(-1)" [disabled]="currentPage === 1" class="pagination-btn">
+      Previous
+    </button>
+  
+    <span class="page-indicator">
+      {{ currentPage }} / {{ totalPages }}
+    </span>
+  
+    <button mat-raised-button color="primary" (click)="changePage(1)" [disabled]="currentPage === totalPages" class="pagination-btn">
+      Next
+    </button>
+  
+    <div class="page-size-container">
+      <label for="page-size">Page Size:</label>
+      <select id="page-size" class="custom-select" (change)="changePageSize($event)">
+        <option [value]="2">2</option>
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+      </select>
+    </div>
+  </div>
+
+<!-- List of organizations -->
+<div class="extensions-container">
+    <div 
+      class="extension-card" 
+      *ngFor="let org of paginatedExtensions"
+      (click)="goToDetails(org.id, org.name, org.isOwner)">
+
+      <div class="icon">
+        <img
+          *ngIf="org.imageUrl"
+          [src]="org.imageUrl"
+          alt="Organization Image"
+          width="300"
+        />
+        <img
+          *ngIf="!org.imageUrl"
+          src="images/loading.png"
+          alt="Organization Image"
+          width="300"
+        />
+      </div>
+  
+      <div class="details">
+        <h3>
+          {{ org.name }}
+          <span *ngIf="org.isOwner" class="owner-icon">👑</span>
+        </h3>
+        <p class="publisher">Created {{ org.createdAt | date:'dd.MM.yyyy. HH:mm' }}</p>
+        <p>{{ org.description }}</p>
+      </div>
+
+       <!-- Buttons for owner -->
+       <div *ngIf="org.isOwner" class="owner-actions">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          (click)="editOrganization(org.id, org.name, org.description, org.imageLocation, org.imageUrl, $event)" 
+          class="edit-btn">
+          Edit
+        </button>
+        <img 
+          src="images/deactivate.png" 
+          alt="Deactivate Organization" 
+          width="24" 
+          height="24" 
+          class="deactivate-icon" 
+          title="Deactivate this organization"
+          (click)="deactivateOrganization(org.id, org.ownerEmail, org.imageLocation, org.name, $event)"
+        />
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,133 @@
+.image-list-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .sort-label {
+    font-size: 14px;
+  }
+
+  .sort {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .filter-input {
+    padding: 10px;
+    margin-left: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .image-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .image-item.selected {
+    border: 2px solid #007bff;
+    background-color: #f0f8ff;
+  }
+  
+  .image-item {
+    cursor: pointer;
+  }
+  
+  
+  .tag-link {
+    color: #007bff;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .meta-info {
+    color: #555;
+    font-size: 0.9em;
+  }
+  
+  .digest-link {
+    color: #007bff;
+  }
+
+.command-container {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.docker-command {
+    font-family: monospace;
+    color: #333;
+    font-size: 14px;
+    flex-grow: 1;
+    white-space: nowrap;
+}
+
+.copy-button {
+    background-color: #007bff;
+    margin-left: 40px;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pag-btn {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  
+  select {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .mat-icon {
+    margin: 0;
+  }
+  
+  .page-size-label {
+    font-size: 14px;
+    margin-right: 10px;
+    margin-left: auto;
+  }
+  
+  .page-counter-label {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+@media (max-width: 768px) {
+    .image-item {
+        flex-wrap: wrap;
+    }
+}
+  

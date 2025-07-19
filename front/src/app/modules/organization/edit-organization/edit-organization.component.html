@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Edit <strong>{{ name }}</strong></h2>
+<mat-dialog-content>
+  <form class="organization-edit-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Update organization description"
+        [(ngModel)]="organizationDescription"
+        name="organizationDescription"
+        maxlength="100"
+      ></textarea>
+    </mat-form-field>
+
+    <div class="upload-container">
+      <label for="fileInput" class="file-label">Upload new image</label>
+      <input
+        id="fileInput"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+    </div>
+
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Preview image" class="preview-img" />
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="isUploading">
+    {{ isUploading ? 'Saving...' : 'Save' }}
+  </button>
+</mat-dialog-actions>
+

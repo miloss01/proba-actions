@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Delete Repository</h3>
+    <div class="warning-container">
+        <p>Delete <strong>{{repository.owner}}/{{repository.name}}</strong></p>
+        <p>
+            This deletes the repository, all the images it contains, and its build settings. 
+            <strong>This cannot be undone.</strong>
+        </p>
+    </div>
+    <p>Type {{repository.name}} to continue</p>
+    <mat-form-field>
+        <!-- <mat-label>What's your name?</mat-label> -->
+        <input matInput [(ngModel)]="userInput" />
+    </mat-form-field>
+    <div class="button-container">
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button 
+            mat-raised-button 
+            color="primary" 
+            (click)="onDelete()" 
+            [disabled]="userInput() !== repository.name">
+            Delete forever
+        </button>    
+</div>    
+</div>

@@ -1,0 +1,36 @@
+<div id="create-team-dialog">
+    <h1 mat-dialog-title>Create New Team</h1>
+    <div mat-dialog-content>
+    <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+        <mat-label>Team Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="teamForm.get('name')?.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="teamForm.get('name')?.hasError('maxlength')">Name must not exceed 20 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"> </textarea>
+        <mat-error *ngIf="teamForm.get('name')?.hasError('maxlength')">Description must not exceed 200 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+        <mat-label>Members</mat-label>
+        <mat-select formControlName="members" multiple>
+            <mat-option *ngFor="let member of members" [value]="member.email">
+            {{ member.email }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="teamForm.get('members')?.hasError('required')">
+            You must select at least one member.
+        </mat-error>
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button color="primary" mat-button type="submit" [disabled]="teamForm.invalid">Create</button>
+        </div>
+    </form>
+    </div>
+</div>

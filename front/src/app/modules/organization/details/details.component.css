@@ -1,0 +1,79 @@
+.members-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 16px;
+  }
+  
+  .left-card, .right-card {
+    width: 48%;
+  }
+
+  .center-card {
+    justify-content: center;
+  }
+
+  .org-title {
+    margin-left: 20px;
+  }
+  
+  .user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+  }
+  
+  .user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .search-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    margin-left: 16px;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0 20px 20px;
+  }
+  
+  .back-icon {
+    cursor: pointer;
+    font-size: 40px;
+    color: #3f51b5; /* Boja strelice */
+    transition: color 0.3s ease;
+  }
+  
+  .back-icon:hover {
+    color: #1e88e5; /* Boja strelice na hover */
+  }
+  
+  .organization-title {
+    margin: 0;
+    font-size: 40px;
+    color: #333;
+  }
+  
+  .user-name {
+    display: inline-flex;
+    align-items: center; 
+  }
+  
+  .owner-icon {
+    font-size: 1.2em; 
+    margin-left: 5px; 
+    margin-bottom: 8px;
+  }
+  
