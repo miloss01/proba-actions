@@ -9,18 +9,21 @@ RUN npm run build --prod
 # Serve with NGINX
 FROM nginx:alpine
 
-# Default vrednost ako nije prosleđeno u compose
 ENV APIHOST=http://localhost:5156/apiizdockerfile/
 
-# Kopiraj build output (pazi da je tačan outputPath iz angular.json)
+# Instaliraj potrebne alate
+RUN apk add --no-cache grep sed bash
+
+# Kopiraj build output
 COPY --from=build /app/dist/front/browser /usr/share/nginx/html
 
-# Zameni apiHost string u JS fajlu
-RUN apk add --no-cache grep sed && \
-    JS_FILE=$(find /usr/share/nginx/html -name 'main*.js') && \
-    sed -i "s|apiHost:\"http://localhost:5156/api/\"|apiHost:\"${APIHOST}\"|g" "$JS_FILE"
+# Kopiraj entrypoint skriptu
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Kopiraj nginx template config
-COPY nginx.template.conf /etc/nginx/templates/default.conf.template
+# Kopiraj nginx config (ako koristiš proxy)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]
