@@ -1,16 +1,9 @@
 #!/bin/sh
 
-echo "Zamenjujem APIHOST u main*.js..."
+echo "Zamenjujem vrednost apiHost u main*.js fajlu..."
 
-JS_PATH="/usr/share/nginx/html"
-APIHOST=${APIHOST:-http://localhost:5156/api/}
-
-# Nađi main*.js fajl i zameni apiHost
-for file in $JS_PATH/main*.js; do
-  if grep -q 'apiHost:' "$file"; then
-    echo "Menjam apiHost u fajlu $file"
-    sed -i "s|apiHost:.*|apiHost:\"$APIHOST\"|g" "$file"
-  fi
+for file in /usr/share/nginx/html/main*.js; do
+  sed -i "s|apiHost:\"[^\"]*\"|apiHost:\"${APIHOST}\"|g" "$file"
 done
 
 echo "Pokrećem NGINX..."
