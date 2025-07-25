@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  registry:
+    image: registry:2.8.3
+    container_name: registry
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      REGISTRY_AUTH: token
+      REGISTRY_AUTH_TOKEN_REALM: "http://host.docker.internal:5001/token"
+      REGISTRY_AUTH_TOKEN_SERVICE: "uks-registry"
+      REGISTRY_AUTH_TOKEN_ISSUER: "uks.registry-auth"
+      REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /certs/cert.pem
+    volumes:
+      - ./certs:/certs
+      - ./config.yml:/etc/docker/registry/config.yml

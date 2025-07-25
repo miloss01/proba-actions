@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5156:5156"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      CONNECTION_STRING: ${ConnectionStrings__DefaultConnection}
+      PORT: ${PORT}
+      APPLY_MIGRATIONS: true
+    depends_on:
+      - postgres
+      - elasticsearch
+    volumes:
+      - ./Startup/super_admin_cred.json:/app/Startup/super_admin_cred.json:ro
+
+  postgres:
+    image: postgres:15
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: uks-database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  elasticsearch:
+    image: elasticsearch:7.17.9
+    container_name: elasticsearch-container
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+volumes:
+  postgres_data:
+  elasticsearch_data:

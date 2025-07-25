@@ -1,0 +1,6 @@
+flask
+pyjwt
+cryptography
+psycopg2
+bcrypt
+gunicorn
