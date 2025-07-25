@@ -1,0 +1,80 @@
+<div class="header-container">
+  <span class="back-icon" (click)="goBack()">&#8592;</span>
+  <h1 class="organization-title">{{ name }}</h1>
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Members">
+    <div class="tab-content">
+      <div class="members-container" [ngClass]="{'center-card': !isOwner}">
+
+        <!-- LEFT SIDE -->
+        <mat-card class="left-card">
+          <h2 class="org-title">Members</h2>
+          <mat-card-content>
+            <app-paginator
+              [currentPage]="currentPageMembers"
+              [totalItems]="members.length"
+              [pageSize]="pageSizeMembers"
+              (pageChange)="onPageChangeMember($event)"
+              (pageSizeChange)="onPageSizeChangeMember($event)">
+            </app-paginator>
+            <div *ngFor="let user of displayedMembers" class="user-item">
+              <img src="images/user.png" alt="user image" class="user-image" />
+              <div>
+                <p><strong class="user-name">Pera Perić
+                  <span *ngIf="user.isOwner" class="owner-icon">👑</span>
+                </strong></p>
+              </div>
+              <div>
+                <p>{{ user.email }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- RIGHT SIDE -->
+        <mat-card *ngIf="isOwner" class="right-card">
+          <h2 class="org-title">Add new member</h2>
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search user...</mat-label>
+              <input matInput [(ngModel)]="searchQuery" (input)="updateSearch()" placeholder="Name, surname or email">
+            </mat-form-field>
+            <app-paginator
+              [currentPage]="currentPage"
+              [totalItems]="filteredUsers.length"
+              [pageSize]="pageSize"
+              (pageChange)="onPageChange($event)"
+              (pageSizeChange)="onPageSizeChange($event)">
+            </app-paginator>
+            <div *ngFor="let user of displayedAllUsers" class="user-item">
+              <img src="images/user.png" alt="user image" class="user-image" />
+              <div>
+                <!-- <p><strong>{{ user.firstName }} {{ user.lastName }}</strong></p> -->
+                <p><strong>Pera Perić</strong></p>
+                <p>{{ user.email }}</p>
+              </div>
+              <button mat-raised-button color="primary" (click)="addUser(user)">Add</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Teams">
+    <div class="tab-content">
+      <h2>Teams</h2>
+      <p>Ovde se prikazuje lista timova.</p>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Repositories">
+    <div class="tab-content">
+      <h2>Repositories</h2>
+      <p>Ovde se prikazuje lista repozitorijuma.</p>
+    </div>
+  </mat-tab>
+</mat-tab-group>

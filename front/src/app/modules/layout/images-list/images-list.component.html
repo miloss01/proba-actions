@@ -1,0 +1,67 @@
+<div class="image-list-container">
+    <div class="header">
+      <div class="sort-filter">
+        <label class="sort-label">Sort by</label>
+        <select [(ngModel)]="sortOption" (change)="applyFilters()" class="sort">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="az">A - Z</option>
+          <option value="za">Z - A</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Filter tags" class="filter-input" [(ngModel)]="filterTag" (input)="onFilter()" />
+      @if (forDeleting) {
+        <button mat-raised-button color="primary"
+         (click)="DeleteTag()"
+         [disabled]="!selectedImage">
+         Delete Tag
+        </button>
+      }
+    </div>
+  
+    <div class="image-list">
+      <div *ngFor="let image of filteredImages" 
+      class="image-item"
+      [class.selected]="image === selectedImage"
+      (click)="selectImage(image)">
+        <div>
+          <p class="tag-link">{{ image.tags }}</p>
+  
+          <div class="meta-info">
+            <span class="last-pushed">
+              Last pushed: {{ image.lastPush }} by
+              <span class="author">{{ image.owner }}</span>
+            </span>
+            <div class="digest">
+              Digest: {{ image.digest }}
+            </div>
+          </div>
+        </div>
+  
+        <div class="command-container">
+            <span class="docker-command">docker pull {{ image.repositoryName }}:{{ image.tags }}</span>
+            <button 
+                class="copy-button" 
+                (click)="copyToClipboard('docker pull ' + image.repositoryName + ':' + image.tags)"
+            >
+                Copy
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination-container">
+        <button mat-raised-button color="primary" class="pag-btn" (click)="onPageChange(-1)">Previous</button>
+        <label class="page-counter-label">{{ page }} of {{ totalNumberOfPages }}</label>
+        <button mat-raised-button color="primary" class="pag-btn"  (click)="onPageChange(1)">Next</button>
+
+        <label class="page-size-label">Page Size:</label>
+        <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+          <option [value]="2">2</option>
+          <option [value]="5">5</option>
+          <option [value]="10">10</option>
+          <option [value]="20">20</option>
+        </select>
+    </div>
+  </div>
+  

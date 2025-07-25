@@ -1,0 +1,57 @@
+<div class="centered-container">
+  <div class="base-container">
+    <h1 class="form-title">{{ title }}</h1>
+    <form [formGroup]="registerForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter your email" required formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" placeholder="Enter the username" required formControlName="username">
+        <mat-error *ngIf="registerForm.controls['username'].hasError('minLength')">
+          Username must be at least 4 characters long
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['username'].hasError('maxLength')">
+          Username cannot be longer than 20 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput type="text" placeholder="Enter your location" formControlName="location">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Enter the password" required formControlName="password">
+        <mat-error *ngIf="registerForm.controls['password'].hasError('minLength')">
+          Password must be at least 8 characters long
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['password'].hasError('maxLength')">
+          Password cannot be longer than 20 characters
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['password'].hasError('whitespace')">
+          Password cannot contain whitespace characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" placeholder="Confirm password" required formControlName="confirmPassword">
+        <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('passwordsNotMatching')">
+          Passwords are not matching
+        </mat-error>
+      </mat-form-field>
+
+      <mat-error *ngIf="errorMessage !== ''">
+        {{errorMessage}}
+      </mat-error>
+      <button mat-raised-button color="primary" type="submit" (click)="submitForm()" [disabled]="registerForm.invalid">
+        {{ isAdmin ? 'Sign Up Admin' : 'Sign Up' }}
+      </button>
+    </form>
+    <a *ngIf="!isAdmin" class="action-link" href="/login">Already have an account? Login</a>
+  </div>
+</div>

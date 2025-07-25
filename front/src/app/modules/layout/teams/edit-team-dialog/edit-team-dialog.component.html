@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edit Team</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editTeamForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Team Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="editTeamForm.get('name')?.hasError('required')">Name is required</mat-error>
+      <mat-error *ngIf="editTeamForm.get('name')?.hasError('maxlength')">Name must not exceed 20 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="editTeamForm.get('name')?.hasError('maxlength')">Description must not exceed 200 characters</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="editTeamForm.invalid">
+    Save
+  </button>
+</div>

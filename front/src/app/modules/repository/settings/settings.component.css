@@ -1,0 +1,22 @@
+h3 {
+    margin-bottom: 8px; /* Reduce the margin below the h3 */
+}
+
+.add-a-description {
+    margin-top: 0;
+    font-size: 0.85rem; /* Adjust font size for description */
+    color: #6c757d; /* Use a lighter color for descriptions */
+}
+
+.margin-top-bottom {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.bordered-container {
+    border: 2px solid #ddd; /* Defines the border */
+    padding: 16px;          /* Adds space inside the border */
+    border-radius: 8px;     /* Optional: Rounds the corners */
+    margin: 16px auto;      /* Optional: Centers and adds margin */
+  }
+  

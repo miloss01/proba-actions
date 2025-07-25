@@ -1,0 +1,32 @@
+<input type="search" [(ngModel)]="searchTerm" (input)="filterTable()" class="search-input" placeholder="Search...">
+
+<table mat-table [dataSource]="filteredUsers">
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let user"> {{ user.username }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="badge">
+      <th mat-header-cell *matHeaderCellDef>Badge</th>
+      <td mat-cell *matCellDef="let user">
+        <mat-select [(value)]="user.badge">
+          <mat-option *ngFor="let badge of badges" [value]="badge">
+            {{ badge }}
+          </mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-raised-button color="primary" (click)="changeBadge(user.id, user.badge)">
+          Change
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+  

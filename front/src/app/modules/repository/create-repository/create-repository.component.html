@@ -1,0 +1,64 @@
+<h1>Create a new repository</h1>
+
+<div class="container">
+    <div class="left">
+        <div class="form-container">
+            <form [formGroup]="repoForm">
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>namespace</mat-label>
+                    <mat-select formControlName="namespace">
+                        @for (namespace of namespaces; track namespace) {
+                            <mat-option [value]="namespace.id">{{namespace.name}}</mat-option>
+
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Repository Name</mat-label>
+                    <input matInput formControlName="name" required="">
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Short Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="radiorow">
+                <h4>Visibility</h4>
+                <mat-radio-group aria-label="Select an option" formControlName="visibility" class="radio-container">
+                    <div class="radio-item">
+                        <mat-radio-button value=true [checked]="true">
+                            Public <mat-icon>public</mat-icon>
+                        </mat-radio-button>
+                        <span class="description">Appears in Docker Hub search results</span>
+                    </div>
+                    <div class="radio-item">
+                        <mat-radio-button value=false>
+                            Private <mat-icon aria-hidden="false" aria-label="Lock icon">lock</mat-icon>
+                          </mat-radio-button>                          
+                        <span class="description">Only visible to you</span>
+                    </div>
+                </mat-radio-group>
+            </div>
+        </form>
+        </div>
+    </div>
+
+    <div class="right">
+        <h3>Pushing Images</h3>
+        <p>You can push a new image to this repository using the CLI</p>
+        <div class="code-block">
+            <p>comand1</p>
+            <p>comand2</p>
+        </div>
+    </div>
+</div>
+
+<div class="buttons">
+    <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onCreate()">Create</button>    
+</div>

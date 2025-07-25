@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Spacing between child elements */
+    padding: 24px; /* A consistent padding inside the modal */
+    max-width: 600px; /* Maximum width for better usability */
+    width: 80vw; /* Makes the modal responsive */
+    height: auto; /* Allows the height to adjust based on content */
+    max-height: 90vh; /* Prevents the modal from exceeding the viewport height */
+    overflow-y: auto; /* Adds a scroll if content exceeds the max-height */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 16px; /* Adds spacing between the buttons */
+}

@@ -1,0 +1,36 @@
+<h2 class="header" *ngIf="userRole == 'StandardUser'">Star repositories</h2>
+<div class="image-list" *ngIf="userRole == 'StandardUser'">
+    <div *ngFor="let repository of starRepositories">
+        <div class="image-header">
+            <div class="repo-name" [routerLink]="['/explore/repository', repository.id]">{{ repository.name }}<span class="image-id">#{{ repository.id }}</span>
+            </div>
+            <div class="badge" [ngClass]="repository.badge">{{ repository.badge }}</div>
+        </div>
+        <div class="image-description">{{ repository.description }}</div>
+        <!-- <div class="image-tags">
+            <span *ngFor="let tag of image.tags" class="tag">{{ tag }}</span>
+        </div> -->
+        <div class="image-footer">
+            <span class="star-count">{{ repository.starCount }} stars</span>
+        </div>
+    </div>
+  </div>
+
+  <h2 class="header">Private repositories</h2>
+  <div class="image-list">
+      <div *ngFor="let repository of privateRepositories">
+        <div class="image-header">
+            <div class="repo-name" [routerLink]="['/explore/repository', repository.id]">{{ repository.name }}<span class="image-id">#{{ repository.id }}</span>
+            </div>
+            <div class="badge" [ngClass]="repository.badge">{{ repository.badge }}</div>
+        </div>
+        <div class="image-description">{{ repository.description }}</div>
+        <!-- <div class="image-tags">
+            <span *ngFor="let tag of image.tags" class="tag">{{ tag }}</span>
+        </div> -->
+        <div class="image-footer">
+            <span class="star-count">{{ repository.starCount }} stars</span>
+        </div>
+    </div>
+    </div>
+

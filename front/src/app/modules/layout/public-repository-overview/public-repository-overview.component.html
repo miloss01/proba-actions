@@ -1,0 +1,33 @@
+<div class="repository-card">
+    <div class="header">
+      <h2>{{ repository?.name }}</h2>
+      <span class="sponsored">{{ repository?.badge }}</span>
+    </div>
+    <p class="description">{{ repository?.description }}</p>
+    <div class="stats">
+      <span class="stat">&#9734; {{ repository?.starCount }}</span>
+    </div>
+</div>  
+
+<mat-tab-group mat-stretch-tabs="true" disablePagination="true">
+    <mat-tab label="Overview">
+        <div class="info-container">
+            <div class="info-box">
+              <p>{{ repository?.description }}</p>
+            </div>
+          
+            <div class="docker-command-box">
+              <h3 class="docker-command-title">Docker Pull Command</h3>
+              <div class="command-container">
+                <span class="docker-command">docker pull {{ repository?.name }}</span>
+                <button class="copy-button" (click)="copyToClipboard('docker pull ' + repository?.name)">Copy</button>
+              </div>
+            </div>
+        </div>          
+    </mat-tab>
+    <mat-tab label="Tags">
+        <div class="image-list-container">
+            <app-images-list [images]="repository ? repository.images : []"></app-images-list>
+        </div>
+    </mat-tab>
+</mat-tab-group>
